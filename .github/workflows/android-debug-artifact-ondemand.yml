@@ -54,15 +54,3 @@ jobs:
         with:
           name: Amaze-Play-debug
           path: app/build/outputs/apk/play/debug/app-play-debug.apk
-      - name: Get artifacts link
-        run: |
-          curl --output fetch.py "https://raw.githubusercontent.com/VishnuSanal/AmazeFileManager/release/4.0/.github/workflows/fetch.py"
-          
-          python -m pip install --upgrade pip requests
-          
-          python fetch.py
-      - name: Notify the user with a comment once the APK is uploaded
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          body-file: 'comment.md'
