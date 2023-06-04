@@ -618,6 +618,7 @@
     <string name="create_file_suggest_txt_extension">It\'s recommended to use \".txt\" as the file extension.</string>
     <string name="ssh_select_pem">Select private key for authentication</string>
     <string name="ssh_key_invalid_passphrase">Invalid key passphrase.</string>
+    <string name="ssh_key_no_decoder_decrypt">No valid decoder to decrypt PEM.</string>
     <string name="encryption_fail_copy">Failed to update encryption entry in database</string>
     <string name="extracted">Extracted</string>
     <string name="compressed">Compressed</string>
@@ -759,6 +760,12 @@ You only need to do this once, until the next time you select a new location for
     <string name="ui_summary">Control what information to show, customize the sidebar, and toggle UI preferences</string>
     <string name="behavior_summary">Modify behaviors such as advanced search and whether to open files as a new task</string>
     <string name="security_summary">Set up password and encryption</string>
+    <string name="backup_summary">Export/Import Amaze settings</string>
+
+    <string name="pref_export">Export</string>
+    <string name="pref_export_summary">Export settings</string>
+    <string name="pref_import">Import</string>
+    <string name="pref_import_summary">Import settings</string>
 
     <string name="quick_desc">Files recently accessed through Amaze</string>
     <string name="recent_desc">Recently created or modified files</string>
@@ -766,16 +773,15 @@ You only need to do this once, until the next time you select a new location for
     <string name="error_cant_decompress_that_file">Cannot process the requested archive</string>
     <string name="analyse_storage">Analyse Storage</string>
     <string name="amaze_file_utilities" translatable="false">Amaze File Utilities</string>
-    <string name="download_amaze_utils_text">You\'re being redirected to Amaze File Utilities. It\'s our offering that has inbuilt audio/video/image/document viewers, allows you to analyse storage files for blurry/dark images, duplicate files, fast transfer using Wifi P2P and much more.\nPlease support us by trying it out.</string>
+    <string name="download_amaze_utils_text">You\'re being redirected to Amaze File Utilities. It\'s our open source app that has inbuilt audio/video/image/document viewers, allows you to analyse junk files to free up storage, fast transfer using Wifi P2P and much more.\nPlease support us by trying it out.</string>
     <string name="download">Download</string>
     <string name="wifip2p">Wi-Fi P2P</string>
     <string name="amaze_utils_installed_alias">Thank you for installing Amaze File Utilities. You\'re being redirected to the app.</string>
     <string name="image_viewer">Amaze Image Viewer</string>
     <string name="video_player">Amaze Video Player</string>
     <string name="amaze_audio_player">Amaze Music Player</string>
-    <string name="pdf_viewer">Amaze Pdf Viewer</string>
-    <string name="epub_viewer">Amaze Epub Viewer</string>
-    <string name="docx_viewer">Amaze Doc Viewer</string>
+    <string name="pdf_viewer">Amaze Document Viewer</string>
+    <string name="docx_viewer">Amaze Document Viewer</string>
     <string name="share_logs">Share logs</string>
     <string name="share_logs_summary">Share captured logs via email / telegram</string>
     <string name="open_with_amaze">Open with Amaze</string>
@@ -789,6 +795,12 @@ You only need to do this once, until the next time you select a new location for
     <string name="protocol_ftp" translatable="false">FTP</string>
     <string name="protocol_ftps">Secure FTP</string>
     <string name="unavailable">Unavailable</string>
+
+    <string name="exporting_failed">Exporting failed: could not write the backup file</string>
+    <string name="importing_failed">Importing failed: could not read the backup file</string>
+    <string name="importing_completed">Importing completed</string>
+    <string name="invalid_backup_file">Invalid backup file</string>
+    <string name="import_failed_for">Import failed for:</string>
     <string name="free_of">"%s\n%s free of %s</string>
     <string name="cloud_error_fdroid">Amaze Cloud Plugin not supported with F-Droid version. Please use Play Store version of Amaze.</string>
     <string name="disable_player_intent_filters">Disable player intent filters</string>

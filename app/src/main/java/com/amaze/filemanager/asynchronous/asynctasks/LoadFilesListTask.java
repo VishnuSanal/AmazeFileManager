@@ -251,32 +251,43 @@ public class LoadFilesListTask
 
   private void postListCustomPathProcess(
       @NonNull List<LayoutElementParcelable> list, @NonNull MainFragment mainFragment) {
-    int t = SortHandler.getSortType(context.get(), path);
-    int sortby;
-    int asc;
-    if (t <= 3) {
-      sortby = t;
-      asc = 1;
+
+    int sortType = SortHandler.getSortType(context.get(), path);
+    int sortBy;
+    int isAscending;
+
+    if (sortType <= 3) {
+      sortBy = sortType;
+      isAscending = 1;
     } else {
-      asc = -1;
-      sortby = t - 4;
+      isAscending = -1;
+      sortBy = sortType - 4;
     }
 
     MainFragmentViewModel viewModel = mainFragment.getMainFragmentViewModel();
 
-    for (LayoutElementParcelable layoutElementParcelable : list) {
+    if (viewModel == null) {
+      LOG.error("MainFragmentViewModel is null, this is a bug");
+      return;
+    }
+
+    for (int i = 0; i < list.size(); i++) {
+      LayoutElementParcelable layoutElementParcelable = list.get(i);
+
+      if (layoutElementParcelable == null) {
+        //noinspection SuspiciousListRemoveInLoop
+        list.remove(i);
+        continue;
+      }
+
       if (layoutElementParcelable.isDirectory) {
-        viewModel.setFolderCount(mainFragment.getMainFragmentViewModel().getFolderCount() + 1);
+        viewModel.incrementFolderCount();
       } else {
-        viewModel.setFileCount(mainFragment.getMainFragmentViewModel().getFileCount() + 1);
+        viewModel.incrementFileCount();
       }
     }
 
-    if (viewModel != null) {
-      Collections.sort(list, new FileListSorter(viewModel.getDsort(), sortby, asc));
-    } else {
-      LOG.error("MainFragmentViewModel is null, this is a bug");
-    }
+    Collections.sort(list, new FileListSorter(viewModel.getDsort(), sortBy, isAscending));
   }
 
   private @Nullable LayoutElementParcelable createListParcelables(HybridFileParcelable baseFile) {
@@ -587,7 +598,7 @@ public class LoadFilesListTask
       _file = new HybridFile(OpenMode.SMB, path);
     }
     if (!_file.getPath().endsWith("/")) {
-      _file.setPath(hFile.getPath() + "/");
+      _file.setPath(_file.getPath() + "/");
     }
     @NonNull List<LayoutElementParcelable> list;
     List<LayoutElementParcelable> smbCache = mainActivityViewModel.getFromListCache(path);
