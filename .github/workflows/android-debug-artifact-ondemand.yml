@@ -46,17 +46,24 @@ jobs:
           arguments: assembleDebug --stacktrace
       - name: Upload fdroid artifact
         uses: actions/upload-artifact@v4
+        id: artifact-upload-fdroid
         with:
           name: Amaze-Fdroid-debug
           path: app/build/outputs/apk/fdroid/debug/app-fdroid-debug.apk
+          if-no-files-found: error
       - name: Upload play artifact
         uses: actions/upload-artifact@v4
+        id: artifact-upload-play
         with:
           name: Amaze-Play-debug
           path: app/build/outputs/apk/play/debug/app-play-debug.apk
-      - name: Notify the user with a comment once the APK is uploaded # TODO: update this with the link to the artifacts
+          if-no-files-found: error
+      - name: Notify the user with a comment once the APK is uploaded
         uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            The requested APKs has been built. Please find them from the artifacts section of this PR.
+            Requested APKs have been built. Please find them from the links below.
+            
+            FDroid Flavour: ${{ steps.artifact-upload-fdroid.outputs.artifact-id }}
+            Play Flavour: ${{ steps.artifact-upload-play.outputs.artifact-id }}
