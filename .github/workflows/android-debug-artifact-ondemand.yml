@@ -61,9 +61,9 @@ jobs:
       - name: Notify the user with a comment once the APK is uploaded
         uses: peter-evans/create-or-update-comment@v2
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ github.event.number }}
           body: |
             Requested APKs have been built. Please find them from the links below.
             
-            FDroid Flavour: ${{ steps.artifact-upload-fdroid.outputs.artifact-id }}
-            Play Flavour: ${{ steps.artifact-upload-play.outputs.artifact-id }}
+            FDroid Flavour: ${{ steps.artifact-upload-fdroid.outputs.artifact-link }}
+            Play Flavour: ${{ steps.artifact-upload-play.outputs.artifact-link }}
