@@ -35,7 +35,7 @@ class TabFragmentTest {
     @JvmField
     val storagePermissionRule: GrantPermissionRule =
         GrantPermissionRule
-            .grant(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .grant(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.MANAGE_EXTERNAL_STORAGE)
 
     @Rule
     @JvmField
